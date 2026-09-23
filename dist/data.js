@@ -838,22 +838,22 @@ window.SUBMISSION_DATA = {
       "category": "classification",
       "reviewTier": "material_judgment",
       "question": "Classify Damaged stock.",
-      "answer": "Write down the €22,000 damaged basement stock to zero.",
+      "answer": "Classify the damaged basement stock as an inventory write-off to zero; D072 records its €22,000 measurement.",
       "evidence": [
         "05 Warehouse Count Marta Notes.pdf",
         "11 Evidence Received After Takeover.pdf",
         "02 FINANCE REFERENCE - Use When You Get Stuck.pdf"
       ],
       "confidence": "high",
-      "aiProposal": "Recognise a €22,000 inventory write-off because the stock is unsaleable.",
-      "independentChallenge": "The independent analysis agrees on the €22,000 write-off but separately proposes a €2,000 disposal provision; that proposal is not adopted without a committed disposal obligation.",
-      "studentReasoning": "Physical existence is not recoverable value. The stock is damaged, has no saleable value, and therefore cannot remain in inventory.",
+      "aiProposal": "Classify the unsaleable stock as an inventory write-off rather than usable inventory.",
+      "independentChallenge": "The independent analysis agrees on the write-off classification but separately proposes a €2,000 disposal provision; that proposal is not adopted without a committed disposal obligation.",
+      "studentReasoning": "Physical existence is not recoverable value. This is the classification decision only; the €22,000 expense and asset reduction are recognised once in D072, not a second time here.",
       "statementEffect": {
-        "profit": -22000,
+        "profit": 0,
         "cash": 0,
-        "assets": -22000,
+        "assets": 0,
         "liabilities": 0,
-        "equity": -22000
+        "equity": 0
       },
       "changedFromAI": false
     },
@@ -1172,7 +1172,7 @@ window.SUBMISSION_DATA = {
       "category": "estimation",
       "reviewTier": "material_judgment",
       "question": "Estimate Closing inventory and document the basis.",
-      "answer": "Set closing inventory at €121,000 usable value.",
+      "answer": "Set closing inventory at €121,000: €134,000 starting basis plus €9,000 count adjustment, less the €22,000 damaged-stock write-off recognised in D072.",
       "evidence": [
         "05 Warehouse Count Marta Notes.pdf",
         "06 Purchases Invoices and Goods Received.pdf"
@@ -1180,13 +1180,13 @@ window.SUBMISSION_DATA = {
       "confidence": "medium",
       "aiProposal": "Use the physical count of €79,000 plus €42,000 usable stock and exclude the €22,000 unsaleable stock.",
       "independentChallenge": "The independent analysis instead derives €112,000 from opening inventory, purchases, stated consumption and write-off, exposing a €9,000 conflict. The physical count is adopted because it directly measures stock at reporting date.",
-      "studentReasoning": "A physical count is direct evidence of closing inventory. The €9,000 difference versus the consumption roll-forward is disclosed as an unresolved count discrepancy and reduces confidence.",
+      "studentReasoning": "The starting basis is €134,000: opening inventory €80,000 plus purchases €459,000 less €405,000 materials consumed. The physical gross count is €143,000, so the count/consumption adjustment is +€9,000. The separate €22,000 damaged-stock write-off is recognised once in D072, producing €121,000 closing inventory. D075 therefore records only the +€9,000 count adjustment and does not duplicate the write-off.",
       "statementEffect": {
-        "profit": -13000,
+        "profit": 9000,
         "cash": 0,
-        "assets": -22000,
+        "assets": 9000,
         "liabilities": 0,
-        "equity": -13000
+        "equity": 9000
       },
       "changedFromAI": true
     },
@@ -1541,11 +1541,13 @@ window.SUBMISSION_DATA = {
     "inventoryAndCogs": {
       "openingInventory": 80000,
       "purchases": 459000,
-      "physicalMaterialsConsumed": 405000,
-      "countDifference": 9000,
-      "damagedStockWriteOff": 22000,
+      "materialsConsumed": -405000,
+      "startingInventoryBeforeCountAdjustment": 134000,
+      "stockCountAdjustment": 9000,
+      "grossPhysicalInventory": 143000,
+      "damagedStockWriteOff": -22000,
       "closingInventory": 121000,
-      "netInventoryRelatedCogs": 418000,
+      "inventoryRelatedCogs": 418000,
       "directEventPayroll": 80000,
       "totalCogs": 498000
     },
@@ -1661,7 +1663,7 @@ window.SUBMISSION_DATA = {
     },
     {
       "name": "Inventory",
-      "calculation": "Physical usable count €121,000; €9,000 count difference is disclosed",
+      "calculation": "Opening €80,000 + purchases €459,000 - materials consumed €405,000 = €134,000; count adjustment +€9,000 = €143,000 gross physical stock; damaged-stock write-off (€22,000) = closing €121,000",
       "difference": 0
     },
     {
@@ -1684,7 +1686,7 @@ window.SUBMISSION_DATA = {
     {
       "topic": "Inventory count difference",
       "amount": 9000,
-      "explanation": "The stated €405,000 consumption roll-forward implies €112,000 after the write-off, while the physical count supports €121,000. The physical count is used; the €9,000 difference remains disclosed."
+      "explanation": "The starting roll-forward is €134,000 before period-end adjustments. The gross physical count is €143,000, creating a +€9,000 count/consumption adjustment. The separate €22,000 damaged-stock write-off reduces closing inventory to €121,000 and is recognised once only."
     },
     {
       "topic": "Legal claim",
